@@ -10,7 +10,7 @@
                     <field name="total_van_ban_den"/>
                     <field name="total_van_ban_di"/>
                     <field name="total_nhan_su"/>
-                    <field name="cong_viec_hoan_thanh_text"/>
+                    <field name="cong_viec_da_hoan_thanh_text"/>
                     <field name="cong_viec_dang_xu_ly_text"/>
                     <templates>
                         <t t-name="kanban-box">
@@ -30,7 +30,7 @@
                                         </span>
                                         <div style="margin-top: 10px; text-align: left;">
                                             <h4 style="font-size: 16px; color: #d32f2f;">📑 Văn bản đến gần đây:</h4>
-                                        <field name="van_ban_den_text" widget ="html" style="white-space: pre-line; font-size: 14px;"/>    
+                                            <field name="van_ban_den_text" style="white-space: pre-line; font-size: 14px;"/>
                                         </div>
                                         <div style="text-align: right; margin-top: 10px;">
                                         <a t-attf-href="/web#menu_id=107&amp;action=150&amp;model=van_ban_den&amp;view_type=list" class="btn btn-link" style="margin-top: 10px;" role="button">➡️ Xem thêm</a>
@@ -48,7 +48,7 @@
                                         </span>
                                         <div widget="html" style="margin-top: 10px; text-align: left;">
                                             <h4 style="font-size: 16px; color: #1565c0;">📑 Văn bản đi gần đây:</h4>
-                                        <field name="van_ban_di_text" widget ="html" style="white-space: pre-line; font-size: 14px;"/>    
+                                            <field name="van_ban_di_text" style="white-space: pre-line; font-size: 14px;"/>
                                         </div>
                                         <div style="text-align: right; margin-top: 10px;">
                                         <a t-attf-href="/web#menu_id=107&amp;action=146&amp;model=van_ban_di&amp;view_type=list" class="btn btn-link" style="margin-top: 10px;" role="button">➡️ Xem thêm</a>
@@ -66,36 +66,49 @@
                                         </span>
                                         <div style="margin-top: 10px; text-align: left;">
                                             <h4 style="font-size: 16px; color: #388e3c;">👤 Nhân sự mới gần đây:</h4>
-                                            <field name="nhan_vien_text" widget ="html" style="white-space: pre-line; font-size: 14px;"/>
+                                            <field name="nhan_vien_text" style="white-space: pre-line; font-size: 14px;"/>
                                         </div>
                                           <div style="text-align: right; margin-top: 10px;">
                                         <a t-attf-href="/web#menu_id=102&amp;action=142&amp;model=nhan_vien&amp;view_type=list" class="btn btn-link" style="margin-top: 10px;" role="button">➡️ Xem thêm</a>
                                     </div>
                                     </div>
                                 </div>
-__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________-
 
-                                <!-- Hàng 2: Công việc đã hoàn thành & chưa hoàn thành -->
-                                <div style="display: flex; justify-content: space-between;  flex-direction: column; gap: 20px;">
-                                    <!-- Công việc đã hoàn thành -->
-                                    <div class="oe_kanban_card"
-                                         style="background: #f1f8e9; border-radius: 10px; padding: 15px;
-                                                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-                                                width: 33%; text-align: center;">
-                                        <h3 style="color: #33691e; font-size: 18px;">✅ Công việc đã hoàn thành</h3>
-                                        <div style="margin-top: 10px; text-align: left;">
-                                            <field name="cong_viec_hoan_thanh_text" style="white-space: pre-line; font-size: 14px;"/>
-                                        </div>
+                                <!-- Hàng Công việc -->
+                        <div style="display: flex; justify-content: space-between; gap: 20px; flex-wrap: nowrap;">
+                            <!-- Công việc đã hoàn thành -->
+                            <div class="oe_kanban_card"
+                                style="background: #f1f8e9; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); flex: 1; text-align: center;">
+                            <h3 style="color: #33691e; font-size: 18px;">✅ Công việc đã hoàn thành</h3>
+                            <div style="margin-top: 10px; text-align: left;">
+                                    <field name="cong_viec_da_hoan_thanh_text" style="white-space: pre-line; font-size: 14px;"/>
+                                </div>
+                            </div>
+
+                                <!-- Công việc đang xử lý -->
+                            <div class="oe_kanban_card"
+                                style="background: #fff3e0; border-radius: 10px; padding: 15px;box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);flex: 1; text-align: center;">
+                                <h3 style="color: #ff6f00; font-size: 18px;">🔄 Công việc đang xử lý</h3>
+                                <div style="margin-top: 10px; text-align: left;">
+                                    <field name="cong_viec_dang_xu_ly_text" style="white-space: pre-line; font-size: 14px;"/>
+                                </div>
+                            </div>
+
+                            <!-- Công việc hoàn thành muộn -->
+                            <div class="oe_kanban_card"
+                                style="background: #fff3e0; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); flex: 1; text-align: center;">
+                                <h3 style="color: #ff6f00; font-size: 18px;">⏳ Công việc hoàn thành muộn</h3>
+                                    <div style="margin-top: 10px; text-align: left;">
+                                        <field name="cong_viec_hoan_thanh_muon_text" style="white-space: pre-line; font-size: 14px;"/>
                                     </div>
-
-                                    <!-- Công việc chưa hoàn thành -->
-                                    <div class="oe_kanban_card"
-                                         style="background: #fff3e0; border-radius: 10px; padding: 15px;
-                                                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-                                                width: 33%; text-align: center;">
-                                        <h3 style="color: #ff6f00; font-size: 18px;">⏳ Công việc đang xử lý</h3>
+                                </div>
+                                    <!-- Công việc đã nhận -->
+                                <div class="oe_kanban_card"
+                                    style="background: #f1f8e9; border-radius: 10px; padding: 15px;box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); flex: 1; text-align: center;">
+                                    <h3 style="color: #33691e; font-size: 18px;">📩 Công việc đã nhận</h3>
                                         <div style="margin-top: 10px; text-align: left;">
-                                            <field name="cong_viec_dang_xu_ly_text" style="white-space: pre-line; font-size: 14px;"/>
+                                            <field name="cong_viec_da_nhan_text" style="white-space: pre-line; font-size: 14px;"/>
                                         </div>
                                     </div>
                                 </div>

@@ -28,29 +28,28 @@ class CongViec(models.Model):
     @api.depends('ngay_hoan_thanh', 'han_xu_ly', 'tinh_trang')
     def _compute_trang_thai(self):
         _logger.info("### COMPUTE TRẠNG THÁI ĐƯỢC GỌI ###")
-    
-        hoan_thanh = self.env['trang_thai'].search([('ten_trang_thai', '=', 'Hoàn thành')], limit=1) or False
-        hoan_thanh_qua_han = self.env['trang_thai'].search([('ten_trang_thai', '=', 'Hoàn thành quá hạn')], limit=1) or False
-        huy = self.env['trang_thai'].search([('ten_trang_thai', '=', 'Huỷ')], limit=1) or False
-        da_nhan = self.env['trang_thai'].search([('ten_trang_thai', '=', 'Đã nhận')], limit=1) or False
-        dang_xu_ly = self.env['trang_thai'].search([('ten_trang_thai', '=', 'Đang xử lý')], limit=1) or False  # Thêm trạng thái mới
 
-        today = date.today()  # Lấy ngày hiện tại
+        # Truy vấn một lần cho hiệu suất tốt hơn
+        trang_thai_dict = {tt['ten_trang_thai']: tt['id'] for tt in self.env['trang_thai'].search_read(
+            [('ten_trang_thai', 'in', ['Hoàn thành', 'Hoàn thành quá hạn', 'Huỷ', 'Đã nhận', 'Đang xử lý'])], ['ten_trang_thai', 'id']
+        )}
+
+        today = date.today()  # Lấy ngày hiện tại chỉ một lần
 
         for record in self:
             _logger.info(f"Đang tính trạng thái cho công việc ID: {record.id}")
-        
+
             if record.ngay_hoan_thanh:
                 if record.han_xu_ly and record.ngay_hoan_thanh > record.han_xu_ly:
-                    record.trang_thai = hoan_thanh_qua_han.id if hoan_thanh_qua_han else False
+                    record.trang_thai = trang_thai_dict.get('Hoàn thành quá hạn', False)
                 else:
-                    record.trang_thai = hoan_thanh.id if hoan_thanh else False
+                    record.trang_thai = trang_thai_dict.get('Hoàn thành', False)
             elif record.tinh_trang == 'huy':
-                record.trang_thai = huy.id if huy else False
+                record.trang_thai = trang_thai_dict.get('Huỷ', False)
             elif record.tinh_trang == 'da_nhan':
                 if record.han_xu_ly and today < record.han_xu_ly:
-                    record.trang_thai = dang_xu_ly.id if dang_xu_ly else False  # Gán "Đang xử lý" nếu chưa đến hạn
+                    record.trang_thai = trang_thai_dict.get('Đang xử lý', False)
                 else:
-                    record.trang_thai = da_nhan.id if da_nhan else False  # Nếu hết hạn vẫn chưa hoàn thành
+                    record.trang_thai = trang_thai_dict.get('Đã nhận', False)
             else:
-                record.trang_thai = False  # Nếu không thuộc trường hợp nào
+                record.trang_thai = False  # Tránh lỗi nếu không có trạng thái phù hợp
