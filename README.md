@@ -1,5 +1,8 @@
 Hệ thống quản lý văn bản
-Danh sách chức năng
+
+    Hệ thống được xây dựng dựa trên thông tư 30 về công tác văn thư. Hệ thống cho phép người dùng quản lý văn bản đi, quản lý văn bản đến. Các văn bản đến sẽ được xử lý thông qua moulde quản lý công việc.
+    Hệ thống xây dựng trên nền tảng odoo 15. 
+    Dưới đây là 1 số hình ảnh minh hoạ
 1. Văn bản đến
 ![alt text](image-5.png)
 ![alt text](image-6.png)
