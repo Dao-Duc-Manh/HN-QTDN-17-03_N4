@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Thêm khách hàng vào form văn bản đi -->
+        <record id="view_van_ban_di_form_khach_hang" model="ir.ui.view">
+            <field name="name">van_ban_di.form.khach_hang</field>
+            <field name="model">van_ban_di</field>
+            <field name="inherit_id" ref="quan_ly_van_ban.view_van_ban_di_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='id_loai_van_ban']" position="after">
+                    <field name="id_khach_hang"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Thêm khách hàng vào tree văn bản đi -->
+        <record id="view_van_ban_di_tree_khach_hang" model="ir.ui.view">
+            <field name="name">van_ban_di.tree.khach_hang</field>
+            <field name="model">van_ban_di</field>
+            <field name="inherit_id" ref="quan_ly_van_ban.view_van_ban_di_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='id_co_quan_ban_hanh']" position="after">
+                    <field name="id_khach_hang"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Thêm khách hàng vào form văn bản đến -->
+        <record id="view_van_ban_den_form_khach_hang" model="ir.ui.view">
+            <field name="name">van_ban_den.form.khach_hang</field>
+            <field name="model">van_ban_den</field>
+            <field name="inherit_id" ref="quan_ly_van_ban.view_van_ban_den_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='id_loai_van_ban']" position="after">
+                    <field name="id_khach_hang"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Thêm khách hàng vào tree văn bản đến -->
+        <record id="view_van_ban_den_tree_khach_hang" model="ir.ui.view">
+            <field name="name">van_ban_den.tree.khach_hang</field>
+            <field name="model">van_ban_den</field>
+            <field name="inherit_id" ref="quan_ly_van_ban.view_van_ban_den_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='id_do_mat']" position="after">
+                    <field name="id_khach_hang"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_khach_hang_dashboard_form" model="ir.ui.view">
+            <field name="name">khach_hang.dashboard.form</field>
+            <field name="model">khach_hang.dashboard</field>
+            <field name="arch" type="xml">
+                <form string="Dashboard Quản lý Khách hàng" create="false" delete="false">
+                    <sheet>
+                        <div class="oe_dashboard">
+                            <!-- Row 1: Tổng số lượng -->
+                            <div class="row">
+                                <!-- Card: Tổng khách hàng -->
+                                <div class="col-md-3">
+                                    <div class="card" style="background-color: #ffcccc; margin-bottom: 20px;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Tổng khách hàng</h5>
+                                            <h2><field name="tong_khach_hang"/></h2>
+                                            <button name="action_view_khach_hang" type="object" string="Xem thêm" class="btn btn-primary mt-2"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card: Tổng hợp đồng -->
+                                <div class="col-md-3">
+                                    <div class="card" style="background-color: #cce5ff; margin-bottom: 20px;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Tổng hợp đồng</h5>
+                                            <h2><field name="tong_hop_dong"/></h2>
+                                            <button name="action_view_hop_dong" type="object" string="Xem thêm" class="btn btn-primary mt-2"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card: Tổng văn bản đến -->
+                                <div class="col-md-3">
+                                    <div class="card" style="background-color: #fff4cc; margin-bottom: 20px;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Tổng văn bản đến</h5>
+                                            <h2><field name="tong_van_ban_den"/></h2>
+                                            <button name="action_view_van_ban_den" type="object" string="Xem thêm" class="btn btn-primary mt-2"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card: Tổng văn bản đi -->
+                                <div class="col-md-3">
+                                    <div class="card" style="background-color: #ccffcc; margin-bottom: 20px;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Tổng văn bản đi</h5>
+                                            <h2><field name="tong_van_ban_di"/></h2>
+                                            <button name="action_view_van_ban_di" type="object" string="Xem thêm" class="btn btn-primary mt-2"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Row 2: Hợp đồng theo trạng thái -->
+                            <div class="row">
+                                <!-- Card: Hợp đồng đang thực hiện -->
+                                <div class="col-md-4">
+                                    <div class="card" style="background-color: #ccffcc; margin-bottom: 20px;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">✓ Hợp đồng đang thực hiện</h5>
+                                            <p>Số lượng: <field name="hop_dong_dang_thuc_hien"/></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card: Hợp đồng sắp hết hạn -->
+                                <div class="col-md-4">
+                                    <div class="card" style="background-color: #fff4cc; margin-bottom: 20px;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">⚠ Hợp đồng sắp hết hạn</h5>
+                                            <p>Số lượng: <field name="hop_dong_sap_het_han"/></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card: Hợp đồng quá hạn -->
+                                <div class="col-md-4">
+                                    <div class="card" style="background-color: #ffcccc; margin-bottom: 20px;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">⏰ Hợp đồng quá hạn</h5>
+                                            <p>Số lượng: <field name="hop_dong_qua_han"/></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <button name="action_view_hop_dong" type="object" string="Xem chi tiết" class="btn btn-success"/>
+                                </div>
+                            </div>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_khach_hang_dashboard_main" model="ir.actions.act_window">
+            <field name="name">Dashboard</field>
+            <field name="res_model">khach_hang.dashboard</field>
+            <field name="view_mode">form</field>
+            <field name="target">current</field>
+            <field name="view_id" ref="view_khach_hang_dashboard_form"/>
+        </record>
+    </data>
+</odoo>
+

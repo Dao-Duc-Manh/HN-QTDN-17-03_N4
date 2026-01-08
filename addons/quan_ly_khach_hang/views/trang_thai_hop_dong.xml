@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_trang_thai_hop_dong_form" model="ir.ui.view">
+            <field name="name">trang_thai_hop_dong.form</field>
+            <field name="model">trang_thai_hop_dong</field>
+            <field name="arch" type="xml">
+                <form string="Trạng thái hợp đồng">
+                    <sheet>
+                        <div class="oe_title">
+                            <h2 class="text-primary" style="font-size: 25px; font-weight: bold;">
+                                Trạng thái hợp đồng</h2>
+                        </div>
+                        <group col="2">
+                            <field name="ten_trang_thai" />
+                            <field name="mo_ta" nolabel="1" colspan="2" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_trang_thai_hop_dong_tree" model="ir.ui.view">
+            <field name="name">trang_thai_hop_dong.tree</field>
+            <field name="model">trang_thai_hop_dong</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ten_trang_thai" />
+                    <field name="mo_ta" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="trang_thai_hop_dong_search">
+            <field name="model">trang_thai_hop_dong</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="ten_trang_thai" />
+                </search>
+            </field>
+        </record>
+
+        <record id="action_trang_thai_hop_dong" model="ir.actions.act_window">
+            <field name="name">Trạng thái hợp đồng</field>
+            <field name="res_model">trang_thai_hop_dong</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="trang_thai_hop_dong_search" />
+        </record>
+    </data>
+</odoo>
+

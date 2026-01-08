@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem
+            id="menu_root_khach_hang"
+            name="QLKH"
+            sequence="10" />
+
+        <menuitem name="Quản lý khách hàng"
+            id="menu_khach_hang"
+            parent="menu_root_khach_hang"
+            sequence="1"
+            action="action_khach_hang"
+        />
+        
+        <menuitem name="Quản lý hợp đồng"
+            id="menu_hop_dong"
+            parent="menu_root_khach_hang"
+            sequence="2"
+            action="action_hop_dong"
+        />
+
+        <menuitem name="Cấu hình"
+            id="menu_cau_hinh_khach_hang"
+            parent="menu_root_khach_hang"
+            sequence="4" />
+            
+        <menuitem name="Loại khách hàng"
+            id="menu_loai_khach_hang"
+            parent="menu_cau_hinh_khach_hang"
+            sequence="1"
+            action="action_loai_khach_hang" />
+
+        <menuitem name="Trạng thái hợp đồng"
+            id="menu_trang_thai_hop_dong"
+            parent="menu_cau_hinh_khach_hang"
+            sequence="2"
+            action="action_trang_thai_hop_dong" />
+
+        <!-- Dashboard Menu -->
+        <menuitem id="menu_khach_hang_dashboard_main"
+            name="Dashboard"
+            parent="menu_root_khach_hang"
+            action="action_khach_hang_dashboard_main"
+            sequence="3" />
+        
+        <menuitem id="menu_hop_dong_dashboard"
+            name="Bảng điều khiển Hợp đồng"
+            parent="menu_root_khach_hang"
+            action="action_hop_dong_dashboard"
+            sequence="4" />
+    </data>
+</odoo>
+

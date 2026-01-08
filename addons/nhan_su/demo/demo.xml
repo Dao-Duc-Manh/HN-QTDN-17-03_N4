@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Phòng ban -->
+        <record id="phong_ban_hanh_chinh" model="phong_ban">
+            <field name="ma_phong_ban">PB001</field>
+            <field name="ten_phong_ban">Phòng Hành chính</field>
+        </record>
+
+        <record id="phong_ban_ke_toan" model="phong_ban">
+            <field name="ma_phong_ban">PB002</field>
+            <field name="ten_phong_ban">Phòng Kế toán</field>
+        </record>
+
+        <record id="phong_ban_nhan_su" model="phong_ban">
+            <field name="ma_phong_ban">PB003</field>
+            <field name="ten_phong_ban">Phòng Nhân sự</field>
+        </record>
+
+        <record id="phong_ban_kinh_doanh" model="phong_ban">
+            <field name="ma_phong_ban">PB004</field>
+            <field name="ten_phong_ban">Phòng Kinh doanh</field>
+        </record>
+
+        <!-- Nhân viên -->
+        <record id="nhan_vien_1" model="nhan_vien">
+            <field name="ma_dinh_danh">NV001</field>
+            <field name="ho_ten">Nguyễn Văn An</field>
+            <field name="ngay_sinh">1990-05-15</field>
+            <field name="que_quan">Hà Nội</field>
+            <field name="email">nguyenvanan@company.com</field>
+            <field name="so_dien_thoai">0912345678</field>
+        </record>
+
+        <record id="nhan_vien_2" model="nhan_vien">
+            <field name="ma_dinh_danh">NV002</field>
+            <field name="ho_ten">Trần Thị Bình</field>
+            <field name="ngay_sinh">1988-08-20</field>
+            <field name="que_quan">Hồ Chí Minh</field>
+            <field name="email">tranthibinh@company.com</field>
+            <field name="so_dien_thoai">0987654321</field>
+        </record>
+
+        <record id="nhan_vien_3" model="nhan_vien">
+            <field name="ma_dinh_danh">NV003</field>
+            <field name="ho_ten">Lê Văn Cường</field>
+            <field name="ngay_sinh">1992-03-10</field>
+            <field name="que_quan">Đà Nẵng</field>
+            <field name="email">levancuong@company.com</field>
+            <field name="so_dien_thoai">0901234567</field>
+        </record>
+
+        <record id="nhan_vien_4" model="nhan_vien">
+            <field name="ma_dinh_danh">NV004</field>
+            <field name="ho_ten">Phạm Thị Dung</field>
+            <field name="ngay_sinh">1991-11-25</field>
+            <field name="que_quan">Hải Phòng</field>
+            <field name="email">phamthidung@company.com</field>
+            <field name="so_dien_thoai">0976543210</field>
+        </record>
+
+        <record id="nhan_vien_5" model="nhan_vien">
+            <field name="ma_dinh_danh">NV005</field>
+            <field name="ho_ten">Hoàng Văn Em</field>
+            <field name="ngay_sinh">1989-07-30</field>
+            <field name="que_quan">Cần Thơ</field>
+            <field name="email">hoangvanem@company.com</field>
+            <field name="so_dien_thoai">0923456789</field>
+        </record>
+    </data>
+</odoo>
+

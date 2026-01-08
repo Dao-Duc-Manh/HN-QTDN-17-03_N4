@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_khach_hang,khach_hang.khach_hang,model_khach_hang,base.group_user,1,1,1,1
+access_loai_khach_hang,loai_khach_hang.loai_khach_hang,model_loai_khach_hang,base.group_user,1,1,1,1
+access_hop_dong,hop_dong.hop_dong,model_hop_dong,base.group_user,1,1,1,1
+access_trang_thai_hop_dong,trang_thai_hop_dong.trang_thai_hop_dong,model_trang_thai_hop_dong,base.group_user,1,1,1,1
+access_khach_hang_dashboard,khach_hang.dashboard,model_khach_hang_dashboard,base.group_user,1,0,0,0
+

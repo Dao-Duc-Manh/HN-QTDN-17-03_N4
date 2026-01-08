@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Nhân viên từ file CSV -->
+        <record id="nhan_vien_csv_001" model="nhan_vien">
+            <field name="ma_dinh_danh">NV001</field>
+            <field name="ho_ten">Nguyễn Văn An</field>
+            <field name="ngay_sinh">1999-05-12</field>
+            <field name="que_quan">Hà Nội</field>
+            <field name="email">an.nguyen@gmail.com</field>
+            <field name="so_dien_thoai">0987000001</field>
+        </record>
+
+        <record id="nhan_vien_csv_002" model="nhan_vien">
+            <field name="ma_dinh_danh">NV002</field>
+            <field name="ho_ten">Trần Thị Bình</field>
+            <field name="ngay_sinh">2000-08-21</field>
+            <field name="que_quan">Nam Định</field>
+            <field name="email">binh.tran@gmail.com</field>
+            <field name="so_dien_thoai">0987000002</field>
+        </record>
+
+        <record id="nhan_vien_csv_003" model="nhan_vien">
+            <field name="ma_dinh_danh">NV003</field>
+            <field name="ho_ten">Lê Văn Cường</field>
+            <field name="ngay_sinh">1998-03-10</field>
+            <field name="que_quan">Hải Phòng</field>
+            <field name="email">cuong.le@gmail.com</field>
+            <field name="so_dien_thoai">0987000003</field>
+        </record>
+
+        <record id="nhan_vien_csv_004" model="nhan_vien">
+            <field name="ma_dinh_danh">NV004</field>
+            <field name="ho_ten">Phạm Thị Dung</field>
+            <field name="ngay_sinh">2001-11-05</field>
+            <field name="que_quan">Thái Bình</field>
+            <field name="email">dung.pham@gmail.com</field>
+            <field name="so_dien_thoai">0987000004</field>
+        </record>
+
+        <record id="nhan_vien_csv_005" model="nhan_vien">
+            <field name="ma_dinh_danh">NV005</field>
+            <field name="ho_ten">Hoàng Văn Đức</field>
+            <field name="ngay_sinh">1997-01-18</field>
+            <field name="que_quan">Hà Nam</field>
+            <field name="email">duc.hoang@gmail.com</field>
+            <field name="so_dien_thoai">0987000005</field>
+        </record>
+
+        <record id="nhan_vien_csv_006" model="nhan_vien">
+            <field name="ma_dinh_danh">NV006</field>
+            <field name="ho_ten">Vũ Thị Hạnh</field>
+            <field name="ngay_sinh">1999-07-09</field>
+            <field name="que_quan">Hà Nội</field>
+            <field name="email">hanh.vu@gmail.com</field>
+            <field name="so_dien_thoai">0987000006</field>
+        </record>
+
+        <record id="nhan_vien_csv_007" model="nhan_vien">
+            <field name="ma_dinh_danh">NV007</field>
+            <field name="ho_ten">Đặng Văn Hùng</field>
+            <field name="ngay_sinh">1996-02-28</field>
+            <field name="que_quan">Bắc Ninh</field>
+            <field name="email">hung.dang@gmail.com</field>
+            <field name="so_dien_thoai">0987000007</field>
+        </record>
+
+        <record id="nhan_vien_csv_008" model="nhan_vien">
+            <field name="ma_dinh_danh">NV008</field>
+            <field name="ho_ten">Bùi Thị Lan</field>
+            <field name="ngay_sinh">2002-04-16</field>
+            <field name="que_quan">Hưng Yên</field>
+            <field name="email">lan.bui@gmail.com</field>
+            <field name="so_dien_thoai">0987000008</field>
+        </record>
+
+        <record id="nhan_vien_csv_009" model="nhan_vien">
+            <field name="ma_dinh_danh">NV009</field>
+            <field name="ho_ten">Phan Văn Minh</field>
+            <field name="ngay_sinh">1998-12-02</field>
+            <field name="que_quan">Hà Tĩnh</field>
+            <field name="email">minh.phan@gmail.com</field>
+            <field name="so_dien_thoai">0987000009</field>
+        </record>
+
+        <record id="nhan_vien_csv_010" model="nhan_vien">
+            <field name="ma_dinh_danh">NV010</field>
+            <field name="ho_ten">Nguyễn Thị Nga</field>
+            <field name="ngay_sinh">1997-06-30</field>
+            <field name="que_quan">Thanh Hóa</field>
+            <field name="email">nga.nguyen@gmail.com</field>
+            <field name="so_dien_thoai">0987000010</field>
+        </record>
+
+        <record id="nhan_vien_csv_011" model="nhan_vien">
+            <field name="ma_dinh_danh">NV011</field>
+            <field name="ho_ten">Trịnh Văn Nam</field>
+            <field name="ngay_sinh">1999-09-14</field>
+            <field name="que_quan">Ninh Bình</field>
+            <field name="email">nam.trinh@gmail.com</field>
+            <field name="so_dien_thoai">0987000011</field>
+        </record>
+
+        <record id="nhan_vien_csv_012" model="nhan_vien">
+            <field name="ma_dinh_danh">NV012</field>
+            <field name="ho_ten">Đỗ Thị Oanh</field>
+            <field name="ngay_sinh">2000-01-25</field>
+            <field name="que_quan">Hải Dương</field>
+            <field name="email">oanh.do@gmail.com</field>
+            <field name="so_dien_thoai">0987000012</field>
+        </record>
+
+        <record id="nhan_vien_csv_013" model="nhan_vien">
+            <field name="ma_dinh_danh">NV013</field>
+            <field name="ho_ten">Ngô Văn Phúc</field>
+            <field name="ngay_sinh">1996-10-07</field>
+            <field name="que_quan">Bắc Giang</field>
+            <field name="email">phuc.ngo@gmail.com</field>
+            <field name="so_dien_thoai">0987000013</field>
+        </record>
+
+        <record id="nhan_vien_csv_014" model="nhan_vien">
+            <field name="ma_dinh_danh">NV014</field>
+            <field name="ho_ten">Phạm Thị Quỳnh</field>
+            <field name="ngay_sinh">2001-03-19</field>
+            <field name="que_quan">Quảng Ninh</field>
+            <field name="email">quynh.pham@gmail.com</field>
+            <field name="so_dien_thoai">0987000014</field>
+        </record>
+
+        <record id="nhan_vien_csv_015" model="nhan_vien">
+            <field name="ma_dinh_danh">NV015</field>
+            <field name="ho_ten">Lương Văn Sơn</field>
+            <field name="ngay_sinh">1998-08-11</field>
+            <field name="que_quan">Sơn La</field>
+            <field name="email">son.luong@gmail.com</field>
+            <field name="so_dien_thoai">0987000015</field>
+        </record>
+
+        <record id="nhan_vien_csv_016" model="nhan_vien">
+            <field name="ma_dinh_danh">NV016</field>
+            <field name="ho_ten">Nguyễn Thị Trang</field>
+            <field name="ngay_sinh">1999-02-04</field>
+            <field name="que_quan">Hà Nội</field>
+            <field name="email">trang.nguyen@gmail.com</field>
+            <field name="so_dien_thoai">0987000016</field>
+        </record>
+
+        <record id="nhan_vien_csv_017" model="nhan_vien">
+            <field name="ma_dinh_danh">NV017</field>
+            <field name="ho_ten">Đinh Văn Tuấn</field>
+            <field name="ngay_sinh">1997-07-23</field>
+            <field name="que_quan">Phú Thọ</field>
+            <field name="email">tuan.dinh@gmail.com</field>
+            <field name="so_dien_thoai">0987000017</field>
+        </record>
+
+        <record id="nhan_vien_csv_018" model="nhan_vien">
+            <field name="ma_dinh_danh">NV018</field>
+            <field name="ho_ten">Đào Thị Vân</field>
+            <field name="ngay_sinh">2000-12-15</field>
+            <field name="que_quan">Thái Nguyên</field>
+            <field name="email">van.dao@gmail.com</field>
+            <field name="so_dien_thoai">0987000018</field>
+        </record>
+
+        <record id="nhan_vien_csv_019" model="nhan_vien">
+            <field name="ma_dinh_danh">NV019</field>
+            <field name="ho_ten">Phạm Văn Long</field>
+            <field name="ngay_sinh">1996-05-27</field>
+            <field name="que_quan">Hòa Bình</field>
+            <field name="email">long.pham@gmail.com</field>
+            <field name="so_dien_thoai">0987000019</field>
+        </record>
+
+        <record id="nhan_vien_csv_020" model="nhan_vien">
+            <field name="ma_dinh_danh">NV020</field>
+            <field name="ho_ten">Nguyễn Thị Yến</field>
+            <field name="ngay_sinh">2002-09-08</field>
+            <field name="que_quan">Bắc Kạn</field>
+            <field name="email">yen.nguyen@gmail.com</field>
+            <field name="so_dien_thoai">0987000020</field>
+        </record>
+    </data>
+</odoo>
+

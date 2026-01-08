@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_loai_khach_hang_form" model="ir.ui.view">
+            <field name="name">loai_khach_hang.form</field>
+            <field name="model">loai_khach_hang</field>
+            <field name="arch" type="xml">
+                <form string="Loại khách hàng">
+                    <sheet>
+                        <div class="oe_title">
+                            <h2 class="text-primary" style="font-size: 25px; font-weight: bold;">
+                                Loại khách hàng</h2>
+                        </div>
+                        <group col="2">
+                            <field name="id" />
+                            <field name="loai_khach_hang" />
+                            <field name="mo_ta" nolabel="1" colspan="2" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_loai_khach_hang_tree" model="ir.ui.view">
+            <field name="name">loai_khach_hang.tree</field>
+            <field name="model">loai_khach_hang</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="id" />
+                    <field name="loai_khach_hang" />
+                    <field name="mo_ta" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="loai_khach_hang_search">
+            <field name="model">loai_khach_hang</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="loai_khach_hang" />
+                    <field name="mo_ta" />
+                </search>
+            </field>
+        </record>
+
+        <record id="action_loai_khach_hang" model="ir.actions.act_window">
+            <field name="name">Loại khách hàng</field>
+            <field name="res_model">loai_khach_hang</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="loai_khach_hang_search" />
+        </record>
+    </data>
+</odoo>
+

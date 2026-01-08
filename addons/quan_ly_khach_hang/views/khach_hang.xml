@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_khach_hang_form" model="ir.ui.view">
+            <field name="name">khach_hang.form</field>
+            <field name="model">khach_hang</field>
+            <field name="arch" type="xml">
+                <form string="Quản lý Khách hàng">
+                    <sheet>
+                        <header>
+                            <button name="action_view_van_ban_di" type="object" class="oe_stat_button"
+                                icon="fa-send">
+                                <field name="van_ban_di_count" widget="statinfo" string="Văn bản đi"/>
+                            </button>
+                            <button name="action_view_van_ban_den" type="object" class="oe_stat_button"
+                                icon="fa-inbox">
+                                <field name="van_ban_den_count" widget="statinfo" string="Văn bản đến"/>
+                            </button>
+                        </header>
+                        <div class="oe_title">
+                            <h2 class="text-primary" style="font-size: 25px; font-weight: bold;">
+                                Thông tin khách hàng</h2>
+                        </div>
+
+                        <div class="card p-3 shadow-sm mb-3">
+                            <group col="4">
+                                <field name="ma_khach_hang" class="o_form_required" />
+                                <field name="ten_khach_hang" />
+                                <field name="id_loai_khach_hang" />
+                            </group>
+                        </div>
+
+                        <div class="card p-3 shadow-sm mb-3">
+                            <group col="4">
+                                <field name="dia_chi" />
+                                <field name="so_dien_thoai" />
+                                <field name="email" />
+                                <field name="ma_so_thue" />
+                            </group>
+                        </div>
+
+                        <div class="card p-3 shadow-sm mb-3">
+                            <group col="4">
+                                <field name="ghi_chu" nolabel="1" colspan="4" />
+                            </group>
+                        </div>
+
+                        <notebook>
+                            <page string="Hợp đồng" name="hop_dong">
+                                <field name="hop_dong_ids" nolabel="1">
+                                    <tree>
+                                        <field name="so_hop_dong" />
+                                        <field name="ten_hop_dong" />
+                                        <field name="ngay_ky" />
+                                        <field name="ngay_bat_dau" />
+                                        <field name="ngay_ket_thuc" />
+                                        <field name="gia_tri_hop_dong" />
+                                        <field name="trang_thai" />
+                                        <field name="tinh_trang" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Công việc" name="cong_viec">
+                                <field name="cong_viec_ids" nolabel="1">
+                                    <tree>
+                                        <field name="ten_cong_viec" />
+                                        <field name="yeu_cau" />
+                                        <field name="ngay_tao" />
+                                        <field name="han_xu_ly" />
+                                        <field name="ngay_hoan_thanh" />
+                                        <field name="tinh_trang" />
+                                        <field name="trang_thai" />
+                                        <field name="van_ban_den_ids" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Văn bản đi" name="van_ban_di">
+                                <field name="van_ban_di_ids" nolabel="1">
+                                    <tree>
+                                        <field name="so_hieu" />
+                                        <field name="tieu_de" />
+                                        <field name="ngay_di" />
+                                        <field name="id_loai_van_ban" />
+                                        <field name="id_do_mat" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Văn bản đến" name="van_ban_den">
+                                <field name="van_ban_den_ids" nolabel="1">
+                                    <tree>
+                                        <field name="so_hieu" />
+                                        <field name="tieu_de" />
+                                        <field name="ngay_den" />
+                                        <field name="id_loai_van_ban" />
+                                        <field name="id_do_mat" />
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_khach_hang_tree" model="ir.ui.view">
+            <field name="name">khach_hang.tree</field>
+            <field name="model">khach_hang</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ma_khach_hang" />
+                    <field name="ten_khach_hang" />
+                    <field name="so_dien_thoai" />
+                    <field name="email" />
+                    <field name="id_loai_khach_hang" />
+                    <field name="dia_chi" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="khach_hang_search">
+            <field name="model">khach_hang</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="ma_khach_hang" />
+                    <field name="ten_khach_hang" />
+                    <field name="so_dien_thoai" />
+                    <field name="email" />
+                    <field name="id_loai_khach_hang" />
+                </search>
+            </field>
+        </record>
+
+        <record id="action_khach_hang" model="ir.actions.act_window">
+            <field name="name">Quản lý Khách hàng</field>
+            <field name="res_model">khach_hang</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="khach_hang_search" />
+        </record>
+    </data>
+</odoo>
+
