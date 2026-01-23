@@ -20,10 +20,17 @@
             action="action_hop_dong"
         />
 
+        <menuitem name="Bảng điều khiển công việc"
+            id="menu_cong_viec_dashboard_khach_hang"
+            parent="menu_root_khach_hang"
+            sequence="3"
+            action="quan_ly_van_ban.action_cong_viec_dashboard"
+        />
+
         <menuitem name="Lọc Khách Hàng"
             id="menu_cau_hinh_khach_hang"
             parent="menu_root_khach_hang"
-            sequence="4" />
+            sequence="5" />
             
         <menuitem name="Loại khách hàng"
             id="menu_loai_khach_hang"
@@ -42,7 +49,7 @@
             name="Dashboard"
             parent="menu_root_khach_hang"
             action="action_khach_hang_dashboard_main_server"
-            sequence="3" 
+            sequence="4" 
             groups="base.group_system"/>
     </data>
 </odoo>
