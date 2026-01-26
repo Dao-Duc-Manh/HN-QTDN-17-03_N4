@@ -20,7 +20,7 @@
             action="action_hop_dong"
         />
 
-        <menuitem name="Bảng điều khiển công việc"
+        <menuitem name="Danh sách công việc"
             id="menu_cong_viec_dashboard_khach_hang"
             parent="menu_root_khach_hang"
             sequence="3"

@@ -1,6 +1,4 @@
 from odoo import models, fields, api
-import json
-import time
 
 
 class VanBanDashboard(models.TransientModel):
@@ -19,22 +17,6 @@ class VanBanDashboard(models.TransientModel):
     @api.model
     def action_open_dashboard(self):
         """Tạo record dashboard và trả về action để mở form view"""
-        # region agent log
-        try:
-            payload = {
-                "sessionId": "debug-session",
-                "runId": "run1",
-                "hypothesisId": "H3",
-                "location": "dashboard.py:action_open_dashboard",
-                "message": "Opening dashboard",
-                "data": {},
-                "timestamp": int(time.time() * 1000),
-            }
-            with open(r"\\wsl.localhost\Ubuntu-22.04\home\trungduc\BTL\.cursor\debug.log", "a", encoding="utf-8") as debug_file:
-                debug_file.write(json.dumps(payload, ensure_ascii=False) + "\n")
-        except Exception:
-            pass
-        # endregion
         dashboard = self.create({})
         # Tính toán statistics ngay sau khi tạo
         dashboard._compute_statistics()
@@ -50,22 +32,6 @@ class VanBanDashboard(models.TransientModel):
 
     @api.depends()
     def _compute_statistics(self):
-        # region agent log
-        try:
-            payload = {
-                "sessionId": "debug-session",
-                "runId": "run1",
-                "hypothesisId": "H4",
-                "location": "dashboard.py:_compute_statistics",
-                "message": "Computing statistics - start",
-                "data": {},
-                "timestamp": int(time.time() * 1000),
-            }
-            with open(r"\\wsl.localhost\Ubuntu-22.04\home\trungduc\BTL\.cursor\debug.log", "a", encoding="utf-8") as debug_file:
-                debug_file.write(json.dumps(payload, ensure_ascii=False) + "\n")
-        except Exception:
-            pass
-        # endregion
         # Tổng số lượng
         self.tong_van_ban_den = self.env['van_ban_den'].search_count([])
         self.tong_van_ban_di = self.env['van_ban_di'].search_count([])
@@ -86,38 +52,6 @@ class VanBanDashboard(models.TransientModel):
         self.cong_viec_dang_xu_ly = self.env['cong.viec'].search_count([('trang_thai', '=', trang_thai_dang_xu_ly.id)]) if trang_thai_dang_xu_ly else 0
         self.cong_viec_hoan_thanh_muon = self.env['cong.viec'].search_count([('trang_thai', '=', trang_thai_hoan_thanh_qua_han.id)]) if trang_thai_hoan_thanh_qua_han else 0
         self.cong_viec_da_nhan = self.env['cong.viec'].search_count([('trang_thai', '=', trang_thai_da_nhan.id)]) if trang_thai_da_nhan else 0
-        # region agent log
-        try:
-            payload = {
-                "sessionId": "debug-session",
-                "runId": "run1",
-                "hypothesisId": "H4",
-                "location": "dashboard.py:_compute_statistics",
-                "message": "Computing statistics - end",
-                "data": {
-                    "tong_van_ban_den": self.tong_van_ban_den,
-                    "tong_van_ban_di": self.tong_van_ban_di,
-                    "tong_nhan_su": self.tong_nhan_su,
-                    "trang_thai_ids": {
-                        "hoan_thanh": trang_thai_hoan_thanh.id if trang_thai_hoan_thanh else None,
-                        "dang_xu_ly": trang_thai_dang_xu_ly.id if trang_thai_dang_xu_ly else None,
-                        "hoan_thanh_qua_han": trang_thai_hoan_thanh_qua_han.id if trang_thai_hoan_thanh_qua_han else None,
-                        "da_nhan": trang_thai_da_nhan.id if trang_thai_da_nhan else None,
-                    },
-                    "cong_viec": {
-                        "hoan_thanh": self.cong_viec_hoan_thanh,
-                        "dang_xu_ly": self.cong_viec_dang_xu_ly,
-                        "hoan_thanh_muon": self.cong_viec_hoan_thanh_muon,
-                        "da_nhan": self.cong_viec_da_nhan,
-                    },
-                },
-                "timestamp": int(time.time() * 1000),
-            }
-            with open(r"\\wsl.localhost\Ubuntu-22.04\home\trungduc\BTL\.cursor\debug.log", "a", encoding="utf-8") as debug_file:
-                debug_file.write(json.dumps(payload, ensure_ascii=False) + "\n")
-        except Exception:
-            pass
-        # endregion
 
 
     def action_view_van_ban_den(self):

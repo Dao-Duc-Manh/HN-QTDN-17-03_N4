@@ -24,7 +24,7 @@
             sequence="3"
             action="action_cong_viec"
         /> -->
-        <menuitem name="Bảng điều khiển công việc"
+        <menuitem name="Danh sách công việc"
             id="menu_cong_viec_dashboard"
             parent="menu_root"
             sequence="4"
