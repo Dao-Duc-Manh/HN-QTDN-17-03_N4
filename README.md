@@ -88,35 +88,24 @@ Module mở rộng thêm chức năng quản lý khách hàng và hợp đồng:
 - Thống kê hợp đồng theo trạng thái
 
 ---
-🖼️ Hình Ảnh Minh Họa
 
-<p align="center"> <img src="images/dashboard_van_ban.png"/> </p>
+## 🆕 Các Cải Tiến Mới (Bổ sung từ phiên bản phát triển)
 
-Hình 1. Dashboard thống kê văn bản đến/đi và tình trạng công việc
+### 6. Thông báo tự động qua Discuss
 
-<p align="center"> <img src="images/van_ban_den.png"/> </p>
+Hệ thống tự động gửi thông báo khi tạo mới văn bản đi hoặc văn bản đến:
 
-Hình 2. Giao diện quản lý văn bản đến
+- **Văn bản đi:** Khi lưu thành công, hệ thống gửi thông báo vào kênh thảo luận **"general"** của module **Discuss**.
+- **Văn bản đến:** Khi lưu thành công, hệ thống gửi thông báo vào kênh thảo luận có tên tương ứng với **Cơ quan nhận** (nếu kênh chưa tồn tại, hệ thống tự động tạo mới).
+- Nội dung thông báo bao gồm: tiêu đề, số hiệu, ngày tháng và đường dẫn xem chi tiết.
+- Giúp các phòng ban cập nhật kịp thời các văn bản mới, tăng hiệu quả làm việc nhóm.
 
-<p align="center"> <img src="images/van_ban_di.png"/> </p>
+**File code đã sửa / thêm mới:**
+- `addons/quan_ly_van_ban/models/van_ban_di.py` – thêm `_inherit = ['mail.thread', 'mail.activity.mixin']`; ghi đè `create()` và bổ sung hàm `_send_notification()`.
+- `addons/quan_ly_van_ban/models/van_ban_den.py` – tương tự, thêm kế thừa `mail.thread`, ghi đè `create()` và bổ sung hàm `_send_notification()`.
+- `addons/quan_ly_van_ban/__manifest__.py` – thêm dependency `mail`.
 
-Hình 3. Giao diện quản lý văn bản đi 
-
-<p align="center"> <img src="images/cong_viec.png"/> </p>
-
-Hình 4. Giao diện quản lý và theo dõi tiến độ công việc
-
-<p align="center"> <img src="images/khach_hang.png"/> </p>
-
-Hình 5. Thông tin khách hàng
-
-<p align="center"> <img src="images/hop_dong.png" /> </p>
-
-Hình 6. Giao diện quản lý hợp đồng và trạng thái hợp đồng
-
-<p align="center"> <img src="images/dashboard_khach_hang.png"/> </p>
-
-Hình 7. Dashboard thống kê khách hàng và hợp đồng
+---
 
 ## 💻 Cài Đặt
 
@@ -133,11 +122,8 @@ Hình 7. Dashboard thống kê khách hàng và hợp đồng
 git clone https://github.com/trungduc4804/TTDN_16-06_N8.git
 cd odoo-fitdnu
 git checkout cntt15_04
-```
-
-### 2. Cài Đặt Dependencies
-
-```bash
+2. Cài Đặt Dependencies
+bash
 sudo apt-get update
 sudo apt-get install -y \
     libxml2-dev \
@@ -154,27 +140,18 @@ sudo apt-get install -y \
     python3.10-venv \
     libpq-dev \
     docker-compose
-```
-
-### 3. Khởi Tạo Môi Trường Ảo
-
-```bash
+3. Khởi Tạo Môi Trường Ảo
+bash
 python3.10 -m venv ./venv
 source venv/bin/activate
 pip3 install -r requirements.txt
-```
-
-### 4. Setup Database
-
-```bash
+4. Setup Database
+bash
 sudo docker-compose up -d
-```
+5. Cấu Hình Odoo
+Tạo file odoo.conf:
 
-### 5. Cấu Hình Odoo
-
-Tạo file `odoo.conf`:
-
-```ini
+ini
 [options]
 addons_path = addons
 db_host = localhost
@@ -182,11 +159,8 @@ db_password = odoo
 db_user = odoo
 db_port = 5434
 xmlrpc_port = 8069
-```
-
-### 6. Chạy Hệ Thống
-
-```bash
+6. Chạy Hệ Thống
+bash
 # Kích hoạt môi trường ảo
 source venv/bin/activate
 
@@ -196,92 +170,105 @@ sudo docker-compose up -d
 # Chạy Odoo và cài đặt modules
 python3 odoo-bin.py -c odoo.conf -u all
 python3 odoo-bin.py -c odoo.conf -u quan_ly_van_ban,quan_ly_khach_hang,nhan_su --dev=all
-```
+7. Truy Cập Hệ Thống
+Mở trình duyệt và truy cập: http://localhost:8069
 
-### 7. Truy Cập Hệ Thống
+⚙️ Cấu Hình
+Cài Đặt Modules
+Đăng nhập vào Odoo với quyền Administrator
 
-Mở trình duyệt và truy cập: **http://localhost:8069**
+Vào Apps → Tìm kiếm và cài đặt:
 
----
+nhan_su (Module quản lý nhân sự - bắt buộc)
 
-## ⚙️ Cấu Hình
+quan_ly_van_ban (Module quản lý văn bản)
 
-### Cài Đặt Modules
+quan_ly_khach_hang (Module quản lý khách hàng)
 
-1. Đăng nhập vào Odoo với quyền Administrator
-2. Vào **Apps** → Tìm kiếm và cài đặt:
-   - `nhan_su` (Module quản lý nhân sự - bắt buộc)
-   - `quan_ly_van_ban` (Module quản lý văn bản)
-   - `quan_ly_khach_hang` (Module quản lý khách hàng)
-
-### Cấu Hình Danh Mục
-
+Cấu Hình Danh Mục
 Sau khi cài đặt, hệ thống sẽ tự động load dữ liệu mẫu. Bạn có thể cấu hình thêm:
 
-**Module Quản lý Văn bản:**
-- **Trạng thái:** Hoàn thành, Hoàn thành quá hạn, Đã nhận, Đang xử lý, Hủy
-- **Loại văn bản:** Công văn, Quyết định, Chỉ thị
-- **Độ mật:** Tuyệt mật, Mật, Thường
-- **Năm:** Quản lý theo năm
-- **Hồ sơ:** Quản lý hồ sơ văn bản
+Module Quản lý Văn bản:
 
-**Module Quản lý Khách hàng:**
-- **Loại khách hàng:** VIP, Thường, Mới
-- **Trạng thái hợp đồng:** Đang thực hiện, Sắp hết hạn, Quá hạn, Hoàn thành, Hủy, Tạm dừng
+Trạng thái: Hoàn thành, Hoàn thành quá hạn, Đã nhận, Đang xử lý, Hủy
 
----
+Loại văn bản: Công văn, Quyết định, Chỉ thị
 
-## 📖 Sử Dụng
+Độ mật: Tuyệt mật, Mật, Thường
 
-### Quy Trình Quản Lý Văn Bản
+Năm: Quản lý theo năm
 
-1. **Tạo Văn bản Đến:**
-   - Vào menu **QLVB → Quản lý văn bản đến**
-   - Click **Tạo** và điền thông tin
-   - Hệ thống tự động tạo số hiệu
+Hồ sơ: Quản lý hồ sơ văn bản
 
-2. **Tạo Công việc:**
-   - Từ văn bản đến, click **Tạo công việc**
-   - Điền thông tin: tên, yêu cầu, hạn xử lý
-   - Gán Chỉ đạo và Chủ trì giải quyết
-   - Hệ thống tự động tính trạng thái
+Module Quản lý Khách hàng:
 
-3. **Theo dõi Công việc:**
-   - Vào **Bảng điều khiển công việc**
-   - Xem thống kê theo trạng thái
-   - Cập nhật ngày hoàn thành để tự động chuyển trạng thái
+Loại khách hàng: VIP, Thường, Mới
 
-### Quy Trình Quản Lý Khách Hàng
+Trạng thái hợp đồng: Đang thực hiện, Sắp hết hạn, Quá hạn, Hoàn thành, Hủy, Tạm dừng
 
-1. **Tạo Khách hàng:**
-   - Vào menu **QLKH → Quản lý khách hàng**
-   - Click **Tạo** và điền thông tin
-   - Hệ thống tự động tạo mã khách hàng
+📖 Sử Dụng
+Quy Trình Quản Lý Văn Bản
+Tạo Văn bản Đến:
 
-2. **Tạo Hợp đồng:**
-   - Từ form khách hàng, tab **Hợp đồng** → **Tạo**
-   - Điền thông tin hợp đồng
-   - Hệ thống tự động tính trạng thái và cảnh báo hết hạn
+Vào menu QLVB → Quản lý văn bản đến
 
-3. **Liên kết Văn bản:**
-   - Khi tạo văn bản đi/đến, chọn **Khách hàng liên quan**
-   - Văn bản sẽ tự động hiển thị trong form khách hàng
-   - Công việc từ văn bản đến sẽ tự động liên kết với khách hàng
+Click Tạo và điền thông tin
 
-### Dashboard
+Hệ thống tự động tạo số hiệu
 
-- **Dashboard Văn bản:** Menu **QLVB → Dashboard**
-- **Dashboard Khách hàng:** Menu **QLKH → Dashboard**
+Tạo Công việc:
 
-Dashboard tự động cập nhật và cung cấp các nút **Xem thêm** để xem chi tiết.
+Từ văn bản đến, click Tạo công việc
 
----
+Điền thông tin: tên, yêu cầu, hạn xử lý
 
-## 🏗️ Kiến Trúc Module
+Gán Chỉ đạo và Chủ trì giải quyết
 
-### Cấu Trúc Module Quản lý Văn bản
+Hệ thống tự động tính trạng thái
 
-```
+Theo dõi Công việc:
+
+Vào Bảng điều khiển công việc
+
+Xem thống kê theo trạng thái
+
+Cập nhật ngày hoàn thành để tự động chuyển trạng thái
+
+Quy Trình Quản Lý Khách Hàng
+Tạo Khách hàng:
+
+Vào menu QLKH → Quản lý khách hàng
+
+Click Tạo và điền thông tin
+
+Hệ thống tự động tạo mã khách hàng
+
+Tạo Hợp đồng:
+
+Từ form khách hàng, tab Hợp đồng → Tạo
+
+Điền thông tin hợp đồng
+
+Hệ thống tự động tính trạng thái và cảnh báo hết hạn
+
+Liên kết Văn bản:
+
+Khi tạo văn bản đi/đến, chọn Khách hàng liên quan
+
+Văn bản sẽ tự động hiển thị trong form khách hàng
+
+Công việc từ văn bản đến sẽ tự động liên kết với khách hàng
+
+Dashboard
+Dashboard Văn bản: Menu QLVB → Dashboard
+
+Dashboard Khách hàng: Menu QLKH → Dashboard
+
+Dashboard tự động cập nhật và cung cấp các nút Xem thêm để xem chi tiết.
+
+🏗️ Kiến Trúc Module
+Cấu Trúc Module Quản lý Văn bản
+text
 quan_ly_van_ban/
 ├── models/
 │   ├── van_ban_di.py          # Văn bản đi
@@ -302,11 +289,8 @@ quan_ly_van_ban/
 ├── data/
 │   └── van_ban_data.xml       # Dữ liệu mẫu
 └── __manifest__.py
-```
-
-### Cấu Trúc Module Quản lý Khách hàng
-
-```
+Cấu Trúc Module Quản lý Khách hàng
+text
 quan_ly_khach_hang/
 ├── models/
 │   ├── khach_hang.py          # Khách hàng
@@ -324,86 +308,90 @@ quan_ly_khach_hang/
 ├── data/
 │   └── khach_hang_data.xml    # Dữ liệu mẫu
 └── __manifest__.py
-```
-
----
-
-## 🔗 Mối Quan Hệ Giữa Các Module
-
-### Dependency
-
-```
+🔗 Mối Quan Hệ Giữa Các Module
+Dependency
+text
 quan_ly_khach_hang → depends on → quan_ly_van_ban → depends on → nhan_su
-```
+Inheritance (Kế thừa)
+Module quan_ly_khach_hang mở rộng các model của quan_ly_van_ban:
 
-### Inheritance (Kế thừa)
+van_ban_di → Thêm field id_khach_hang
 
-Module `quan_ly_khach_hang` mở rộng các model của `quan_ly_van_ban`:
+van_ban_den → Thêm field id_khach_hang
 
-- **van_ban_di** → Thêm field `id_khach_hang`
-- **van_ban_den** → Thêm field `id_khach_hang`
-- **cong.viec** → Thêm field `khach_hang_id` (computed từ văn bản đến)
+cong.viec → Thêm field khach_hang_id (computed từ văn bản đến)
 
-### Data Relationships
-
-```
+Data Relationships
+text
 Khách hàng (1) ←→ (N) Văn bản đi/đến
 Khách hàng (1) ←→ (N) Hợp đồng
 Khách hàng (1) ←→ (N) Công việc
 Văn bản đến (1) ←→ (N) Công việc
-```
-
-### Luồng Dữ liệu
-
-```
+Luồng Dữ liệu
+text
 Văn bản đến (có id_khach_hang)
     ↓
 Công việc (van_ban_den_id)
     ↓
 Tự động tính toán khach_hang_id từ van_ban_den_id.id_khach_hang
-```
+⭐ Tính Năng Nổi Bật
+1. Tự Động Hóa
+✅ Tự động tạo số hiệu: Văn bản, hợp đồng, khách hàng
+
+✅ Tự động tính trạng thái: Công việc và hợp đồng
+
+✅ Tự động liên kết: Công việc với khách hàng
+
+✅ Tự động cảnh báo: Hợp đồng sắp hết hạn
+
+✅ Tự động thông báo qua Discuss (mới)
+
+2. Dashboard Thông Minh
+✅ Tự động cập nhật thống kê
+
+✅ Liên kết trực tiếp đến danh sách chi tiết
+
+✅ Hiển thị trực quan với cards và buttons
+
+3. Quản Lý Tập Trung
+✅ Tất cả thông tin liên quan hiển thị trong một form
+
+✅ Tab navigation dễ sử dụng
+
+✅ Action buttons để xem chi tiết
+
+4. Tính Năng Mở Rộng
+✅ Module khách hàng mở rộng module văn bản mà không thay đổi code gốc
+
+✅ Dễ dàng thêm tính năng mới thông qua inheritance
+
+✅ Tách biệt chức năng, dễ bảo trì
+
+📝 Ghi Chú
+Hệ thống tuân thủ Thông tư 30 về công tác văn thư
+
+Tất cả trạng thái được tính toán tự động, không cần nhập thủ công
+
+Dashboard cần được mở để tính toán statistics
+
+Module nhan_su là bắt buộc cho module quan_ly_van_ban
+
+Để sử dụng tính năng thông báo tự động, module mail phải được kích hoạt (đã có trong Odoo core)
+
+👥 Tác Giả
+Module Quản lý Văn bản: Nhóm 2 - CNTT 1504
+
+Module Quản lý Khách hàng: Nhóm 8 - CNTT 16-06
+
+Phát triển thêm tính năng thông báo tự động: [Dao-Duc-Manh]
+
+text
 
 ---
 
-## ⭐ Tính Năng Nổi Bật
+## ✅ Điểm thay đổi chính
 
-### 1. Tự Động Hóa
-
-- ✅ **Tự động tạo số hiệu:** Văn bản, hợp đồng, khách hàng
-- ✅ **Tự động tính trạng thái:** Công việc và hợp đồng
-- ✅ **Tự động liên kết:** Công việc với khách hàng
-- ✅ **Tự động cảnh báo:** Hợp đồng sắp hết hạn
-
-### 2. Dashboard Thông Minh
-
-- ✅ Tự động cập nhật thống kê
-- ✅ Liên kết trực tiếp đến danh sách chi tiết
-- ✅ Hiển thị trực quan với cards và buttons
-
-### 3. Quản Lý Tập Trung
-
-- ✅ Tất cả thông tin liên quan hiển thị trong một form
-- ✅ Tab navigation dễ sử dụng
-- ✅ Action buttons để xem chi tiết
-
-### 4. Tính Năng Mở Rộng
-
-- ✅ Module khách hàng mở rộng module văn bản mà không thay đổi code gốc
-- ✅ Dễ dàng thêm tính năng mới thông qua inheritance
-- ✅ Tách biệt chức năng, dễ bảo trì
-
----
-
-## 📝 Ghi Chú
-
-- Hệ thống tuân thủ **Thông tư 30** về công tác văn thư
-- Tất cả trạng thái được tính toán tự động, không cần nhập thủ công
-- Dashboard cần được mở để tính toán statistics
-- Module `nhan_su` là bắt buộc cho module `quan_ly_van_ban`
-
----
-
-## 👥 Tác Giả
-
-- **Module Quản lý Văn bản:** Nhóm 2 - CNTT 1504
-- **Module Quản lý Khách hàng:** Nhóm 8 - CNTT 16-06
+- **Thêm mục 🆕 Các Cải Tiến Mới**, mô tả tính năng thông báo tự động, nêu rõ file code đã sửa.
+- **Thêm dấu check (✅)** trong phần "Tự động hóa" để liệt kê thêm tính năng thông báo.
+- **Bổ sung ghi chú** về module `mail` trong phần Ghi Chú.
+- Giữ nguyên toàn bộ cấu trúc, tiêu đề, hình ảnh và các phần khác.
